@@ -1,0 +1,105 @@
+/*# sourceMappingURL=signup.module.css.map */
+  margin: 0 auto;
+  width: 150px;
+}
+.signup .logo > a {
+  display: block;
+}
+.signup .logo > a > img {
+  width: 100%;
+}
+.signup > h2 {
+  text-align: center;
+  margin: 5% auto;
+  font-size: var(--big);
+}
+.signup > p {
+  text-align: center;
+  margin: 5% auto;
+  font-size: var(--middle);
+}
+.signup .signupBox {
+  width: 100%;
+  background-color: white;
+  padding: 5%;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 5% 0;
+}
+.signup .signupBox > form .vv {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 480px;
+}
+.signup .signupBox > form .vv input {
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 3% 5%;
+  border-radius: 10px;
+  margin: 5px 0;
+}
+.signup .signupBox > form .vv .exists {
+  color: red;
+}
+.signup .signupBox > form .termsBox .checkPage {
+  background-color: white;
+  padding: 10% 5%;
+}
+.signup .signupBox > form .termsBox .checkPage .terms {
+  display: flex;
+}
+.signup .signupBox > form .termsBox .checkPage .terms > input {
+  display: none;
+}
+.signup .signupBox > form .termsBox .checkPage .terms > label {
+  position: relative;
+}
+.signup .signupBox > form .termsBox .checkPage .terms > label::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.signup .signupBox > form .termsBox .checkPage .terms > label > p {
+  cursor: pointer;
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+.signup .signupBox > form .termsBox .checkPage .terms > input:checked + label::before {
+  background-color: #90BC43;
+  border: 1px solid #90BC43;
+}
+.signup .signupBox > form .termsBox .checkPage .termsList .termsItem {
+  margin-bottom: 20px;
+}
+.signup .signupBox > form .termsBox .checkPage .termsList .termsItem .termsTextBox {
+  border-radius: 10px;
+  width: 90%;
+  max-height: 100px;
+  overflow: auto;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-left: 30px;
+}
+.signup .signupBox > form .termsBox .checkPage .termsList .termsItem .termsTextBox .termsText {
+  font-size: var(--small);
+  padding: 2% 4%;
+  line-height: 1.5;
+  overflow: hidden;
+}
+.signup .signupBox > form .termsBox > button {
+  width: 100%;
+  height: 50px;
+  background-color: #79CC1D;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+.signup .signupBox > form .termsBox > button:disabled {
+  background-color: gray;
+}/*# sourceMappingURL=signup.module.css.map */

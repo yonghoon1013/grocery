@@ -1,0 +1,280 @@
+.color {
+  background-color: white;
+}
+.color .map img {
+  margin-top: 40px;
+  width: 100%;
+}
+.color .add {
+  padding: 20px;
+  margin: 0 30px;
+  border-radius: 20px;
+  border-bottom: 2px solid #E8E8E8;
+}
+.color .flex {
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 0 50px 0;
+}
+.color .flex .face img {
+  width: 100px;
+  border-radius: 50%;
+  box-shadow: 3px 3px #b1b0b0;
+  margin-right: 5%;
+}
+.color .flex .face p {
+  text-align: center;
+  font-size: 14px;
+}
+.color .flex div {
+  margin-right: 20%;
+  line-height: 1.5;
+}
+.color .flex div p:first-of-type {
+  font-size: 24px;
+}
+.color .flex div p {
+  font-size: 20px;
+}
+.color .flex button {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  width: 95px;
+  height: 35px;
+  background-color: #8DEAC6;
+  border-radius: 20px;
+  border: none;
+}
+.color .line {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e8e8e8;
+  font-size: 20px;
+}
+.color ul {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.color ul li {
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+  margin-top: 20px;
+  width: 85%;
+  padding: 20px;
+  background-color: #E8E8E8;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.color ul li img {
+  width: 35px;
+  margin-left: 50px;
+  margin-right: 15px;
+  border-radius: 20px;
+}
+.color ul li .smile {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  font-size: 14px;
+}
+.color ul li .smile p:last-of-type {
+  font-size: 16px;
+  font-weight: bold;
+}
+.color form {
+  display: flex;
+  justify-content: center;
+}
+.color form input {
+  width: 70%;
+  height: 50px;
+  border: 1px solid #8DEAC6;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.color form button {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  height: 50px;
+  background-color: #8DEAC6;
+  width: 65px;
+  border-radius: 20px;
+}
+
+.white {
+  background-color: white;
+  position: relative;
+}
+.white .bold h3 {
+  padding: 50px 0 50px 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.white .ad {
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  width: 50px;
+  height: 30px;
+}
+.white .ad img {
+  width: 100%;
+}
+.white figcaption {
+  font-size: 24px;
+  padding-left: 40px;
+  font-weight: bold;
+}
+.white .address {
+  margin: 40px 0 40px 20px;
+  display: flex;
+  align-items: center;
+}
+.white .address img {
+  width: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.white .group {
+  display: flex;
+  flex-direction: column;
+}
+.white .group .list {
+  border: 1px solid #E8E8E8;
+  border-radius: 20px;
+  box-shadow: 2px 2px #E8E8E8;
+  width: 90%;
+  padding: 40px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.white .group .list .up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 2;
+}
+.white .group .list .up img {
+  width: 60px;
+  border-radius: 50px;
+  box-shadow: 2px 2px #b1b0b0;
+}
+.white .group .list .up .size {
+  width: 50%;
+}
+.white .group .list .down {
+  margin-top: 30px;
+}
+.white .group .list .down p {
+  margin-bottom: 20px;
+}
+.white .group .list .down .center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.white .group .list .down .center img {
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+.white .group .list .down .center button {
+  margin: 30px auto;
+  display: block;
+  cursor: pointer;
+  width: 90%;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #8DEAC6;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+.white .plus {
+  width: 50px;
+  margin: 30px;
+}
+.white .plus img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.modal .modalStyle {
+  background-color: #ffffff;
+  border: 1px solid #E8E8E8;
+  box-shadow: 3px 3px #E8E8E8;
+}
+.modal .modalStyle h3 {
+  background-color: #8DEAC6;
+  text-align: center;
+  padding: 30px;
+  margin: 20px auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+.modal .modalStyle form {
+  display: flex;
+  flex-direction: column;
+}
+.modal .modalStyle form .first {
+  display: flex;
+  justify-content: center;
+}
+.modal .modalStyle form .first div:first-of-type {
+  width: 40%;
+}
+.modal .modalStyle form .first div:first-of-type p {
+  margin: 30px;
+}
+.modal .modalStyle form .first div:last-of-type {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.modal .modalStyle form label {
+  margin: 20px 0;
+  display: flex;
+}
+.modal .modalStyle form label input {
+  margin-left: 20px;
+  border: 1px solid #E8E8E8;
+  padding: 5px;
+}
+.modal .modalStyle form label button {
+  margin: 0 20px;
+  width: 30px;
+  height: 20px;
+  border-radius: 20px;
+}
+.modal .modalStyle form label textarea {
+  border: 2px solid #E8E8E8;
+  margin-left: 20px;
+  width: 60%;
+}
+.modal .modalStyle form .mapp {
+  display: flex;
+  flex-direction: column;
+}
+.modal .modalStyle form .mapp p {
+  margin: 20px;
+}
+.modal .modalStyle form .mapp .success {
+  cursor: pointer;
+  width: 70%;
+  height: 30px;
+  margin: 30px auto;
+  border-radius: 20px;
+  background-color: #8DEAC6;
+  font-weight: bold;
+  font-size: 16px;
+}/*# sourceMappingURL=party.module.css.map */
