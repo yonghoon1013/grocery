@@ -49,10 +49,11 @@
                 text-align: start;
 
             }
-            >button{
+            .logOut{
                 margin-top: 10px;
                 background: none;
                 font-size: var(--small);
+                cursor: pointer;
             }
         }
         }

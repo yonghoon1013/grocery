@@ -13,6 +13,7 @@
     border-radius: 100%;
     width: var(--big);
     height: var(--big);
+    transform: translateX(calc(var(--small) * -1));
     justify-content: center;
     align-items: center;
     bottom: 10%;
@@ -116,9 +117,10 @@
         li {
             width: 140px;
             margin-bottom: 5%;
+            position: relative;
             figure {
                 >div{
-                    position: relative;
+
                     border:1px #79CC1D solid;
                     border-radius: 20px;
                     overflow: hidden;
@@ -170,6 +172,7 @@
 }
 
 .lover{
+    z-index: 1;
     position:absolute;
     top: 5%;
     right: 5%;
@@ -199,4 +202,15 @@
     font-size: var(--small);
     border-radius: var(--middle);
     background-color: #79CC1D;
+}
+
+.pop{
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; height: 100%;
+    max-width: 800px;
+    z-index: 10;
+    background-color: rgba($color: #000000, $alpha: .4);
 }

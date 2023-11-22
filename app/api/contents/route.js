@@ -16,7 +16,7 @@ export async function GET() {
         V.num = K;
         let ea = res.data.price.filter(item => item.productName == V.productName );
         if(ea.length == 2){
-            V.도매 = {dpr1:ea[1].dpr1, dpr2:ea[1].dpr2, dpr3:ea[1].dpr3, dpr4:ea[1].dpr4}
+            V.도매 = {dpr1:ea[1].dpr1, dpr2:ea[1].dpr2, dpr3:ea[1].dpr3, dpr4:ea[1].dpr4, unit:ea[1].unit}
         }
         return V;
     })

@@ -6,7 +6,7 @@ import styles from './party.module.scss';
 import { useRouter } from 'next/navigation';
 
 const Party_modal = () => {
-  const {matchData, setMatchData, KakaoMap, matchLd} = useContext(myContext);
+  const {matchData, setMatchData, KakaoMap, matchLd, sessData, logLd} = useContext(myContext);
   const [guestCount, setGuestCount] = useState(2);
   const [clickedPosition, setClickedPosition] = useState(null);
   const [clickedAddress, setClickedAddress] = useState(null);
@@ -15,6 +15,12 @@ const Party_modal = () => {
 
   const router = useRouter();
 
+  let id;
+  let nickname;
+  if (typeof window !== "undefined") {
+    id = sessionStorage.getItem("id");
+    nickname = sessionStorage.getItem("nickname");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,8 +29,8 @@ const Party_modal = () => {
     formData.append('lng', clickedPosition.lng);
     formData.append('lat', clickedPosition.lat);
     formData.append('address', clickedAddress);
-    formData.append("id", sessionStorage.getItem("id"));
-    formData.append("nickname", sessionStorage.getItem("nickname"));
+    formData.append("id", id);
+    formData.append("nickname", nickname);
     let objData = Object.fromEntries(formData);
   
     console.log(objData);
@@ -41,7 +47,7 @@ const Party_modal = () => {
   };
 
   const handleDecrement = () => {
-    if (guestCount > 1) {
+    if (guestCount > 2) {
       setGuestCount(guestCount - 1);
     }
   };
@@ -100,6 +106,10 @@ const Party_modal = () => {
   }, [map]);
 
 
+  useEffect(()=>{
+    logLd();
+  }, [])
+
 
 
 
@@ -110,10 +120,10 @@ const Party_modal = () => {
         <h3>입력하기</h3>
         <form onSubmit={handleSubmit}>
           <div className={styles.first}>
-            <div>
+            <figure>
               <img src="../asset/smilingface.png" alt="smiling face" />
-              <p>{sessionStorage.getItem("nickname")}</p> 
-            </div>
+              <figcaption>작성자 {nickname}</figcaption> 
+            </figure>
 
             <div>
               <label>
@@ -146,7 +156,7 @@ const Party_modal = () => {
           
           <div className={styles.mapp}>
           {clickedAddress && <p>주소: {clickedAddress}</p>}
-            <KakaoMap lat={currentPosition?.lat} lng={currentPosition?.lng} setMap={setMap}/>
+            <KakaoMap lat={currentPosition?.lat} lng={currentPosition?.lng} setMap={setMap} draggable={true} zoomable={true}/>
             <button className={styles.success}>완료</button>
           </div>
         </form>

@@ -11,10 +11,8 @@ export async function GET(req) {
 
 export async function POST(req) {
     const data = await req.json();
-    console.log(data)
     await queryExecute("insert into memo (id, text, ch) values (?, ?, ?)", [data.id, data.text, data.ch])
     const newData = await queryExecute("select * from memo where id=?", [data.id])
-    console.log(newData)
 
     return Response.json(newData);
 }

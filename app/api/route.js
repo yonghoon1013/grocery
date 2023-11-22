@@ -1,16 +1,39 @@
-import axios from 'axios';
-
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-	host: 'svc.sel5.cloudtype.app',
-	user: 'root',
-	password: '1324',
-	database: 'test',
-	port: "31944"
+	host: process.env.S_HOST,
+	user: process.env.S_USER,
+	password: process.env.S_PASSWORD,
+	database: process.env.S_DATABASE,
+	port: process.env.S_PORT
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// });
+
 connection.connect();
+
 
 export async function queryExecute(str, value) {
 	let data = await new Promise((resolve, reject) => {

@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 
 function Login() {
-  const {memberData} = useContext(myContext);
+  const {memberData, logPush} = useContext(myContext);
   const router = useRouter();
 
 
@@ -25,12 +25,13 @@ function Login() {
     try{
       axios.get(`/api/login?id=${objData.id}&password=${objData.password}`)
       .then(res => {
-        sessionStorage.setItem("id", res.data[0].id);
-        sessionStorage.setItem("nickname", res.data[0].nickname);
+        let data = {id: res.data[0].id, nickname: res.data[0].nickname};
+        logPush(data);
         router.push('/');
-        console.log(res.data[0])
       })
       .catch(error => {
+        console.log('로긴에러');
+        console.log(objData);
         Swal.fire({
           icon: 'error',
           title:"<p style='color:#ff003e; font-size: 18px;'>" + "아이디 또는 비밀번호를 잘못 입력했습니다" + "</p>"+ "<p style='color:#ff003e; font-size: 18px; margin-top:10px;'>" + "입력하신 내용을 다시 확인해주세요" + "</p>",
