@@ -6,18 +6,19 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 function Party() {
-  const { matchData, setMatchData, KakaoMap, loginCk } = useContext(myContext);
+  const { matchData, setMatchData, KakaoMap } = useContext(
+    myContext
+  );
   const [map, setMap] = useState({});
+  const [checkedItems, setCheckedItems] = useState({});
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [address, setAddress] = useState('');
   const [filteredMatches, setFilteredMatches] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
   const router = useRouter();
 
-  useEffect(()=>{
-    loginCk();
-  })
+
+
 
   //좌표빼기
   const geo = () => {
@@ -40,8 +41,7 @@ function Party() {
     geo();
   }, []);
 
-  // const apiKey = '39f1ed72f3a77ac7897504949ccc197e';
-  const apiKey = 'eb851606ceed969fac40c0f6b0c41d16';
+  const apiKey = '39f1ed72f3a77ac7897504949ccc197e';
 
 
 
@@ -76,14 +76,22 @@ function Party() {
 
 
 
-  const handleCheckboxChange = (num) => {
-    if (selectedItem === num) {
-      setSelectedItem(null);
-    } else {
-      setSelectedItem(num);
-    }
-  };
 
+
+  
+  const handleCheckboxChange = (num) => {
+    setCheckedItems((prevCheckedItems) => {
+      const newCheckedItems = {};
+      if (!prevCheckedItems[num]) {
+        Object.keys(prevCheckedItems).forEach((key) => {
+          newCheckedItems[key] = false;
+        });
+        newCheckedItems[num] = true;
+      }
+      return newCheckedItems;
+    });
+  };
+  
 
 
 
@@ -95,7 +103,6 @@ function Party() {
     e.preventDefault();
     router.push(`/pages/matchmaking`);
   };
-
 
 
 
@@ -114,45 +121,44 @@ function Party() {
   return (
     <section className={styles.white}>
       <div className={styles.bold}>
-        <h3>장 같이 보기 <img src="/asset/mainlogo.png" /></h3>
-        
+        <h3>장 같이 보기</h3>
       </div>
 
-      <div className={styles.textbox}>
-        <p>실시간 매칭으로 같이 장보러 갈 친구를 찾아보세요.</p>
-        <p>현재 위치 기준으로 근처에 장을 보러 가고싶은 사람들의 목록이 보입니다.</p>
+      <div>
+        <figure className={styles.ad}>
+          <img src="../asset/AD.png" alt="광고" />
+        </figure>
+        <figcaption>이번달 배추가 풍년이래요~</figcaption>
       </div>
 
       <div className={styles.address}>
-        <p>현재 위치 : {address}</p> 
+        <div>
+ <p>{address}</p> 
+
+    </div>
+
         <img onClick={geo} src="../asset/rotate.png" alt="회전" />
+
       </div>
-      <p className={styles.grayfont}>1.5km 반경 안에 있는 매칭이 보입니다.</p>
 
       <div>
         <ul className={styles.group}>
           {filteredMatches.map((item) => (
             <li key={item.num} className={styles.list}>
               <div className={styles.up}>
-                
+                <img src="../asset/smilingface.png" alt="웃는 얼굴" />
                 <div className={styles.size}>
-                  <p>작성자 <span className={styles.font}>{item.id}</span> </p>
-                  <p><span className={styles.font}>{item.title}</span>({item.mCount ? item.mCount : "1"}/{item.count}) 명</p>
-                  <p><span className={styles.font}>약속시간</span> {item.time} </p>
+                  <p>{item.title} (1/{item.count})</p>
+                  <p>{item.time} </p>
                 </div>
-                <button
-                  className={`${styles.rotateButton} ${selectedItem === item.num ? styles.clicked : ''}`}
-                  onClick={() => handleCheckboxChange(item.num)}
-                >
-                  <img src="../asset/click.png" />
-                </button>
+                <input type='checkbox' checked={checkedItems[item.num] || false} onChange={() => handleCheckboxChange(item.num)} />
               </div>
-              {selectedItem === item.num && (
+              {checkedItems[item.num] && (
                 <div className={styles.down}>
-                  <p>출발 장소 : {item.address}</p>
+                  <p>주소 : {item.address}</p>
                   <div className={styles.center}>
-                    <KakaoMap setMap={setMap} lat={item.lat} lng={item.lng} draggable={false} zoomable={false}/>
-                    <button onClick={() => { goDetail(item.num) }}>자세히 보기</button>
+                    <KakaoMap setMap={setMap} lat={item.lat} lng={item.lng}  />
+                    <button onClick={()=>{goDetail(item.num)}}>자세히 보기</button>
                   </div>
                 </div>
               )}
@@ -161,7 +167,7 @@ function Party() {
         </ul>
       </div>
       <div>
-        <div className={`fixed ${styles.plus}`} onClick={handlePlusClick}>
+        <div className={styles.plus} onClick={handlePlusClick}>
           <img src="../asset/plus.png" alt="더하기" />
         </div>
       </div>

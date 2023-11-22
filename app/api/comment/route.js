@@ -4,6 +4,7 @@ export async function POST(req) {
     const qdata = await req.json();
     await queryExecute("insert into comment (sNum, id, nickname, text) values (?, ?, ?, ?)", [qdata.num, qdata.id, qdata.nickname, qdata.text])
     const data = await queryExecute("select * from comment where sNum=?", [qdata.num])
+    console.log(qdata);
     return Response.json(data);
 }
 

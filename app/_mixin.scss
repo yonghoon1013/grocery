@@ -6,7 +6,7 @@
     --small: 1.5rem;
     .fixed{ 
         position: fixed;
-        right: calc(50% - 400px) 
+        right: calc(50% - 390px + var(--small)) 
     }
 }
 
@@ -19,7 +19,7 @@
         --small: 3vw;
 
         .fixed{
-            right:0;
+            right: var(--small);
         }
     }
 

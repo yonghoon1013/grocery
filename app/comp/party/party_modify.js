@@ -17,12 +17,6 @@ const Party_modify = () => {
   const matchParams = useSearchParams();
   let sNum = matchParams.get("num");
 
-  let id;
-  let nickname;
-  if (typeof window !== "undefined") {
-    id = sessionStorage.getItem("id");
-    nickname = sessionStorage.getItem("nickname");
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,8 +25,8 @@ const Party_modify = () => {
     formData.append('lng', clickedPosition.lng);
     formData.append('lat', clickedPosition.lat);
     formData.append('address', clickedAddress);
-    formData.append("id", id);
-    formData.append("nickname", nickname);
+    formData.append("id", sessionStorage.getItem("id"));
+    formData.append("nickname", sessionStorage.getItem("nickname"));
     let objData = Object.fromEntries(formData);
   
     console.log(objData);
@@ -118,10 +112,10 @@ const Party_modify = () => {
         <h3>수정하기</h3>
         <form onSubmit={handleSubmit}>
           <div className={styles.first}>
-            <figure>
+            <div>
               <img src="/asset/smilingface.png" alt="smiling face" />
-              <figcaption>작성자 {nickname}</figcaption> 
-            </figure>
+              <p>{sessionStorage.getItem("nickname")}</p> 
+            </div>
 
             <div>
               <label>
@@ -154,7 +148,7 @@ const Party_modify = () => {
           
           <div className={styles.mapp}>
           {clickedAddress && <p>주소: {clickedAddress}</p>}
-            <KakaoMap lat={currentPosition?.lat} lng={currentPosition?.lng} setMap={setMap} draggable={true} zoomable={true}/>
+            <KakaoMap lat={currentPosition?.lat} lng={currentPosition?.lng} setMap={setMap}/>
             <button className={styles.success}>완료</button>
           </div>
         </form>

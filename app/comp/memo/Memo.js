@@ -1,25 +1,14 @@
 'use client'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './memo.module.scss'
 import axios from 'axios';
-import { myContext } from '../Context';
 
 
 function Memo() {
-  const {sessData, loginCk} = useContext(myContext);
   const [memo, setmemo] = useState([]);
   const [CH_FT, setCH_FT] = useState([]);
   const inpyref = useRef();
-  // const id = sessData.id;
-
-  let id;
-  let nickname;
-  if (typeof window !== "undefined") {
-    id = sessionStorage.getItem("id");
-    nickname = sessionStorage.getItem("nickname");
-  }
-
-
+  const id = sessionStorage.getItem("id");
 
   // setmemo([{ text: 123456, check: true }, { text: 2123456, check: false }, { text: 1123456, check: false }])
   const memo_get = async () => {
@@ -30,9 +19,6 @@ function Memo() {
       })
   }
 
-  useEffect(()=>{
-    loginCk()
-  })
 
 
   const clickmemo = (v) => {
@@ -78,12 +64,6 @@ function Memo() {
 
         <div className={styles.list}>
           <ul>
-          <li className={styles.input}>
-            <label>
-              <button className={`${styles.Cbut} ${styles.green} ${styles.Plus}`}></button>
-              <input type='text' autofocus placeholder='메모를 입력해 주세요' onKeyDown={(e) => { e.key == 'Enter' ? key_Down(e) : "" }} ref={inpyref}></input>
-            </label>
-          </li>
             {
               memo.map((v, k) => (
                 <li key={k} className={`${styles.input}`} onClick={() => { clickmemo(v) }}>
@@ -94,6 +74,17 @@ function Memo() {
                 </li>
               ))
             }
+            <li className={styles.input}>
+              <label>
+                <button className={`${styles.Cbut} ${styles.green} ${styles.Plus}`}></button>
+                {
+                  !id ? 
+                <input type='text'  value={"로그인을 먼저 해주시기 바랍니다"}></input>
+                  :
+                <input type='text' onKeyDown={(e) => { e.key == 'Enter' ? key_Down(e) : "" }} ref={inpyref}></input>
+                }
+              </label>
+            </li>
           </ul>
           <button onClick={clear_but} className={`${styles.clear_but} fixed`} ></button>
         </div>
